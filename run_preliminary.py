@@ -13,12 +13,14 @@ from algorithm import CCR
 
 
 if __name__ == '__main__':
-    results_path = os.path.join(os.path.dirname(__file__), 'results')
+    # 结果路径
+    results_path = os.path.join(os.path.dirname(__file__), 'self_results')
 
     if not os.path.exists(results_path):
         os.mkdir(results_path)
 
     comparable = []
+    # 能量值
     energies = [0.001, 0.0025, 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 10.0, 25.0, 50.0, 100.0]
 
     for energy in energies:
@@ -27,7 +29,7 @@ if __name__ == '__main__':
         comparable.append(file_name)
 
     summary, tables = compare(comparable)
-
+    
     for measure in ['auc', 'g-mean', 'f-measure']:
         table = tables[measure]
         data = []
